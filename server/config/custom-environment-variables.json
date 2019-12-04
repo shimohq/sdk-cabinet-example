@@ -1,0 +1,8 @@
+{
+  "port": "PORT",
+  "shimo": {
+    "entrypoint": "SHIMO_ENTRYPOINT",
+    "clientId": "SHIMO_CLIENT_ID",
+    "clientSecret": "SHIMO_CLIENT_SECRET"
+  }
+}

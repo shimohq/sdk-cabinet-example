@@ -1,0 +1,34 @@
+{
+  "name": "sdk-cabinet-server-example",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "init": "node scripts/init.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "^2.2.3",
+    "better-sqlite3": "^5.4.2",
+    "config": "^3.2.2",
+    "fs-extra": "^8.1.0",
+    "got": "^9.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "koa": "^2.7.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "lodash.camelcase": "^4.3.0",
+    "pino": "^5.13.2",
+    "pino-pretty": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
+}

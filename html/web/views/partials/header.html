@@ -1,0 +1,29 @@
+<nav class="navbar col-lg-12 col-12 p-0 d-flex flex-row">
+  <div class="navbar-brand-wrapper d-flex justify-content-center">
+    <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
+      <a class="navbar-brand brand-logo" href="/"><img src="/static/images/logo.png" alt="logo"></a>
+    </div>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+    {% if file %}
+    <ul class="navbar-nav mr-lg-4 w-100">
+      <li class="nav-item d-lg-block w-100 text-body ml-0">
+        {% include "file/partials/file-title.html" %}
+      </li>
+    </ul>
+    {% endif %}
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item nav-profile dropdown">
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+          <span class="nav-profile-name">{{ user.username }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" href="/logout">
+            <i class="mdi mdi-logout text-primary"></i>
+            登出
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,64 @@
+{% extends "layout/base.html" %}
+
+{% block main %}
+<div class="row flex-grow-1">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">文件列表</h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>文件名</th>
+                <th>GUID</th>
+                <th>创建时间</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for file in files %}
+              <tr data-guid="{{ file.guid }}" data-type="{{ file.humanizedType }}" data-pdf="{{ file.canExportPDF }}">
+                <td>
+                  <a href="/files/{{ file.guid }}">
+                    <i class="mdi mdi-file-{{ file.typeIcon }}" title="{{ file.typeLabel }}"></i>
+                    {{ file.title }}
+                  </a>
+                </td>
+                <td>
+                  <a href="/files/{{ file.guid }}">{{ file.guid }}</a>
+                </td>
+                <td>{{ file.createdAt }}</td>
+                <td>
+                  <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon btn-export-file" title="导出" data-export-type="{{ file.exportType }}">
+                    <i class="mdi mdi-download"></i>
+                  </button>
+                  {% if file.canExportPDF %}
+                  <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon btn-export-pdf" title="导出 PDF" data-export-type="pdf">
+                    <i class="mdi mdi-file-pdf-box"></i>
+                  </button>
+                  {% endif %}
+                  <button type="button" class="btn btn-outline-secondary btn-rounded btn-icon btn-delete-file" title="删除">
+                    <i class="mdi mdi-delete-forever"></i>
+                  </button>
+                </td>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+          <div class="d-flex justify-content-between mt-3">
+            <a href="?page=">
+              <i class="mdi mdi-arrow-left"></i>
+              上一页
+            </a>
+            <a href="?page=">
+              下一页
+              <i class="mdi mdi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

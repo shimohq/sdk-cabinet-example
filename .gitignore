@@ -1,0 +1,7 @@
+node_modules
+bundle
+dist
+shimo-sdk.db
+server/static/css
+**/*/config/local.*
+package-lock.json

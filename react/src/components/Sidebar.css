@@ -1,0 +1,7 @@
+.sidebar input[type=file] {
+  bottom: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 100%;
+  visibility: hidden;
+}

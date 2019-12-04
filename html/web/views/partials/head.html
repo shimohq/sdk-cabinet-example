@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{% if file %}
+<title>{{ file.title }} | 石墨文档</title>
+{% else %}
+<title>石墨文档</title>
+{% endif %}
+<link href="/static/images/logo-mini.ico" rel="shortcut icon">
+<link href="/static/lib/majestic/css/style.css" rel="stylesheet">
+<link href="/static/lib/majestic/vendors/mdi/css/materialdesignicons.min.css" rel="stylesheet">
+<link href="/static/css/app.css" rel="stylesheet">
+<script>
+  window.config = {{ config | dump | safe }}
+</script>

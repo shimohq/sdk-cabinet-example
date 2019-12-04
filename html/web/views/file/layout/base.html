@@ -1,0 +1,16 @@
+{% include "partials/head.html" %}
+
+<body class="page-base">
+  <div class="container-scroller">
+    {% include "partials/header.html" %}
+
+    <div class="container-fluid page-body-wrapper pt-0">
+      <div class="main-panel flex-grow-1 position-relative">
+        {% block main %}{% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+
+{% include "partials/foot.html" %}
+{% block foot %}{% endblock %}

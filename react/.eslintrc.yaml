@@ -1,0 +1,10 @@
+---
+  extends:
+  - standard
+  - standard-react
+  parser: babel-eslint
+  env:
+    browser: true
+  ignorePatterns: ['majestic']
+  rules:
+    "node/no-deprecated-api": 0

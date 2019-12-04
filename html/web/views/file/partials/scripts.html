@@ -1,0 +1,10 @@
+<script>
+  // You can use any variables to store these three variables, and pass it to Shimo SDK Cabinet later
+  if (window.shimo == null) {
+    window.shimo = {}
+  }
+  window.shimo.fileGuid = '{{ file.guid }}'
+  window.shimo.entrypoint = '{{ file.config.entrypoint }}'
+  window.shimo.accessToken = '{{ file.config.token }}'
+</script>
+<script src="/static/js/file/common.js"></script>

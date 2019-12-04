@@ -1,0 +1,36 @@
+{% include "partials/head.html" %}
+
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth px-0">
+      <div class="row w-100 mx-0">
+        <div class="col-lg-4 mx-auto">
+          <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+            <div class="brand-logo">
+              <img src="/static/images/logo.png" alt="石墨文档">
+            </div>
+            <p>欢迎使用石墨 SDK 演示程序</p>
+            <form class="pt-3">
+              <div class="form-group">
+                <input type="text" class="form-control form-control-lg" id="username" placeholder="Username" required pattern="^[\w]{3,12}$">
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" required pattern="^[a-z0-9_-]{6,32}$">
+              </div>
+              <div class="mt-3">
+                <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">登录</button>
+              </div>
+              <div class="text-center mt-4 font-weight-light">
+                <a href="/register" class="text-primary">注册账号</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% include "partials/foot.html" %}
+
+<script src="/static/js/login.js"></script>
