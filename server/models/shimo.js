@@ -9,6 +9,20 @@ const request = got.extend({
 })
 
 module.exports = {
+  async getToken (username, options) {
+    const body = Object.assign({
+      clientId: config.shimo.clientId,
+      clientSecret: config.shimo.clientSecret,
+      scope: 'write',
+      grantType: 'client_credentials',
+      clientUserId: `shimo_cabinet_${username}`
+    }, options)
+
+    return (await request.post('/oauth2/token', {
+      body
+    })).body
+  },
+
   async createFile (username, data) {
     const token = await this.getToken(username)
 
