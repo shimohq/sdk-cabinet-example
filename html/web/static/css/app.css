@@ -27,7 +27,21 @@ body {
   height: 100%;
 }
 
+.import-input {
+  bottom: 100%;
+  opacity: 0;
+  position: absolute;
+  right: 100%;
+  visibility: hidden;
+}
+
 /* Custom shimo editor */
+
+.sm-editor {
+  /* 确保编辑器符合容器尺寸，底部工具条正常显示 */
+  flex: 1;
+  height: calc(100vh - 140px);
+}
 
 .sm-editor-scroller {
   height: calc(100vh - 106px)!important;

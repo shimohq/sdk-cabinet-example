@@ -44,6 +44,12 @@ export default {
 
 <style>
 .sm-editor {
+  /* 确保编辑器符合容器尺寸，底部工具条正常显示 */
   flex: 1;
+  height: calc(100vh - 140px);
+}
+
+.confirm-dialog-footer {
+  box-sizing: content-box;
 }
 </style>
