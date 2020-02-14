@@ -56,7 +56,7 @@ router.get('/files', loadToken, checkUser, async ctx => {
     const ids = new Set(files.map(f => f.userId))
 
     if (ids.size === 0) {
-      return
+      return []
     }
 
     const users = await User.getAllByIds(Array.from(ids))
