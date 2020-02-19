@@ -95,11 +95,11 @@ router.post('/files/import', loadToken, checkUser, async ctx => {
 })
 
 router.get('/files/:guid', loadToken, checkUser, async ctx => {
-  ctx.body = await Shimo.getFile(ctx.state.user.name, ctx.params.guid)
+  ctx.body = await Shimo.getFile(ctx.state.user.username, ctx.params.guid)
 })
 
 router.delete('/files/:guid', loadToken, checkUser, async ctx => {
-  await Shimo.deleteFile(ctx.state.user.name, ctx.params.guid)
+  await Shimo.deleteFile(ctx.state.user.username, ctx.params.guid)
   await File.delete(ctx.params.guid)
   ctx.status = 204
 })
@@ -108,13 +108,13 @@ router.patch('/files/:guid', loadToken, checkUser, async ctx => {
   const title = ctx.request.body.title
   ctx.assert(typeof title === 'string' && title.trim().length > 0, 400, `Invalid title: ${title}`)
 
-  await Shimo.updateTitle(ctx.state.user.name, ctx.params.guid, title)
+  await Shimo.updateTitle(ctx.state.user.username, ctx.params.guid, title)
   await File.updateTitle(ctx.params.guid, title)
   ctx.status = 204
 })
 
 router.get('/files/:guid/export', loadToken, checkUser, async ctx => {
-  ctx.body = await Shimo.exportFile(ctx.state.user.name, ctx.params.guid, ctx.query.toType)
+  ctx.body = await Shimo.exportFile(ctx.state.user.username, ctx.params.guid, ctx.query.toType)
 })
 
 router.get('/users/me', loadToken, checkUser, ctx => {
