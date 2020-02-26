@@ -18,4 +18,6 @@ npm i
 npm start
 ```
 
-默认假定 `server` 运行于 `8081` 端口 (即 `http://localhost:8081`) ，如果需修改后端服务的地址，请修改 [`html/config/default.js`](/html/config/default.js`](/vue/src/constants/index.js) 文件。
+默认假定 `server` 运行于 `8081` 端口 (即 `http://localhost:8081`) ，如果需修改后端服务的地址，请修改 [`html/config/default.js`](/vue/src/constants/index.js) 文件。
+
+运行后需要在 `http://localhost:8080/login` 注册一个本地用户。

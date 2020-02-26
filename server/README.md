@@ -28,3 +28,5 @@ SHIMO_ENTRYPOINT=<...> SHIMO_CLIENT_ID=<...> SHIMO_CLIENT_SECRET=<...> npm start
 ```
 
 服务器默认运行在 `8081` 端口，通过 `http://localhost:8081` 可访问。
+
+此项目用于演示客户现有系统如何和石墨 SDK 集成，包括现有用户如何使用石墨 SDK，因此需要通过接口 `http://localhost:8081/register` 或其他前端项目 ([html](../html) / [react](../react) / [vue](../vue)) 的 `http://localhost:8080/login` 页面注册用户
