@@ -21,7 +21,7 @@ async function register(form) {
       'Content-Type': 'application/json'
     }
   })
-  if (res.status === 200) {
+  if (res.status === 204) {
     location.href = '/'
   } else {
     throw new Error(`注册失败：${await res.text()}`)
