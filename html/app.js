@@ -46,7 +46,7 @@ app.use(async (ctx, next) => {
 app.use(async (ctx, next) => {
   await next()
 
-  if (ctx.status !== 404 || !ctx.path.startsWith('/static/')) {
+  if (ctx.status !== 404 || !ctx.path.includes('/static/')) {
     return
   }
 
@@ -60,7 +60,7 @@ app.use(async (ctx, next) => {
   }
 
   await send(
-    ctx, ctx.path.replace(/^\/static/, ''),
+    ctx, ctx.path.replace(/\/static/, ''),
     { root: path.resolve(__dirname, 'web/static') }
   )
 })
