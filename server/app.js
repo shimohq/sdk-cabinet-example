@@ -18,7 +18,11 @@ app.use(async (ctx, next) => {
   }
 })
 
-app.use(body())
+app.use(body({
+  jsonLimit: '1gb',
+  formLimit: '1gb',
+  textLimit: '1gb'
+}))
 app.use(cors())
 
 app.use(router.routes())
