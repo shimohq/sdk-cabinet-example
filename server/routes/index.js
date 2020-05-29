@@ -14,7 +14,12 @@ router.use(async (ctx, next) => {
   try {
     await next()
   } catch (e) {
-    logger.error(e)
+    logger.error({
+      url: ctx.url,
+      message: e.message,
+      status: e.status || e.statusCode,
+      stack: e.stack
+    })
 
     ctx.status = e.status || e.statusCode || 500
     if (e.body) {
