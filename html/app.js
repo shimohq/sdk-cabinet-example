@@ -46,7 +46,7 @@ app.use(async (ctx, next) => {
 app.use(async (ctx, next) => {
   await next()
 
-  if (ctx.status !== 404 || !ctx.path.includes('/static/')) {
+  if (ctx.status !== 404 || !ctx.path.startsWith('/static/')) {
     return
   }
 
@@ -55,6 +55,16 @@ app.use(async (ctx, next) => {
       ctx,
       ctx.path.split('/lib/sdk-cabinet/')[1],
       { root: path.resolve(__dirname, 'node_modules/shimo-sdk-cabinet/dist') }
+    )
+    return
+  }
+
+  const match = ctx.path.match(/\/lib\/(whatwg-fetch|es6-promise)\/(.+)/i)
+  if (match) {
+    await send(
+      ctx,
+      match[2],
+      { root: path.resolve(__dirname, `node_modules/${match[1]}`) }
     )
     return
   }
