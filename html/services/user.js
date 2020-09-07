@@ -4,7 +4,7 @@ const config = require('config')
 const got = require('got')
 
 const request = got.extend({
-  baseUrl: config.apiServer,
+  baseUrl: typeof config.apiServerInternal === 'string' && config.apiServerInternal.trim() ? config.apiServerInternal : config.apiServer,
   json: true
 })
 
