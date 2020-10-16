@@ -40,5 +40,10 @@ module.exports = {
     ).all(...ids)
 
     return users ? users.map(u => new User(camelCase(u))) : []
+  },
+
+  async getAll () {
+    const users = await db.prepare('SELECT * FROM users').all()
+    return users ? users.map(u => new User(camelCase(u))) : []
   }
 }

@@ -25,7 +25,11 @@ export default {
       entrypoint: file.config.entrypoint,
       token: file.config.token,
 
-      container: this.$refs.editorRef
+      container: this.$refs.editorRef,
+
+      editorOptions: {
+        isMobile: this.$store.state.isMobile
+      }
     })
     this.cabinet.render()
       .then(

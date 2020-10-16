@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import ShimoCabinet from 'shimo-sdk-cabinet/dist/document.min'
+
+import './DocumentEditor.css'
 
 class DocumentEditor extends React.Component {
   constructor (props) {
@@ -21,7 +24,11 @@ class DocumentEditor extends React.Component {
       entrypoint: file.config.entrypoint,
       token: file.config.token,
 
-      container: this.editorRef.current
+      container: this.editorRef.current,
+
+      editorOptions: {
+        isMobile: this.props.isMobile
+      }
     })
     this.cabinet.render()
       .then(() => {
@@ -39,7 +46,7 @@ class DocumentEditor extends React.Component {
 
   render () {
     return (
-      <div className='editor-container'>
+      <div className='editor-container document '>
         <div className='editor-toolbar' />
         <div className='editor-body position-relative row d-flex flex-grow-1 justify-content-center'>
           <div className='editor flex-grow-1' ref={this.editorRef} />
@@ -51,7 +58,15 @@ class DocumentEditor extends React.Component {
 
 DocumentEditor.propTypes = {
   file: PropTypes.object.isRequired,
-  onReady: PropTypes.func
+  onReady: PropTypes.func,
+  isMobile: PropTypes.bool
 }
 
-export default DocumentEditor
+export default connect(
+  (state, ownProps) => {
+    return {
+      isMobile: state.Global.isMobile
+    }
+  },
+  dispatch => ({})
+)(DocumentEditor)

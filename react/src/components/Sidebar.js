@@ -90,7 +90,7 @@ class Sidebar extends React.Component {
               <span className='menu-title'>新建文档</span>
             </span>
             <div>
-              <ul className='nav flex-column sub-menu'>
+              <ul className='nav sub-menu'>
                 <li className='nav-item'>
                   <button type='button' className='nav-link majestic-btn' onClick={this.handleCreateFile('document')}>文档</button>
                 </li>
@@ -111,7 +111,7 @@ class Sidebar extends React.Component {
               <span className='menu-title'>导入文档</span>
             </span>
             <div>
-              <ul className='nav flex-column sub-menu'>
+              <ul className='nav sub-menu'>
                 <li className='nav-item'>
                   <button type='button' className='nav-link majestic-btn' onClick={this.handleImportFile()}>文档 / 表格</button>
                 </li>

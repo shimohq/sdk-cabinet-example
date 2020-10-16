@@ -162,5 +162,40 @@ module.exports = {
     }
 
     return request(url, options)
+  },
+
+  /**
+   * 获取协作者列表
+   * @param {string} username
+   * @returns {Array.<Object>}
+   */
+  async findUsers (username, clientUserIds) {
+    // 处于安全考虑，获取用户列表 API 建议在后端中处理，scope 权限也应该和前端使用的不同
+    const token = await this.getToken(username, { scope: 'read user:list' })
+
+    let page = 1
+    const size = 50
+
+    const users = []
+    while (true) {
+      const res = await request.post('/users/find', {
+        body: {
+          clientUserIds: clientUserIds,
+          page: page++,
+          size
+        },
+        headers: {
+          Authorization: `Bearer ${token.accessToken}`
+        }
+      })
+
+      users.push(...res.body.users)
+
+      if (res.body.users.length < size) {
+        break
+      }
+    }
+
+    return users
   }
 }

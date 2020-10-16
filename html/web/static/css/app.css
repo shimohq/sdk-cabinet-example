@@ -102,3 +102,109 @@ body {
   top: 0;
   z-index: 0;
 }
+
+/* For Mobile */
+.mobile-view .page-base {
+  height: 100vh;
+  min-width: auto;
+}
+
+.mobile-view .page-body-wrapper {
+  flex-direction: column;
+}
+
+.mobile-view .sidebar {
+  height: initial;
+  min-height: initial;
+  width: 100%;
+}
+
+.mobile-view .sidebar > .nav {
+  margin: 0;
+}
+
+.mobile-view .sub-menu.nav {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.mobile-view .sub-menu.nav li {
+  flex: 1;
+  list-style: none;
+}
+
+.mobile-view .sub-menu.nav li:before {
+  display: none;
+}
+
+.mobile-view .main-panel {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.mobile-view .main-panel > .content-wrapper {
+  padding: 0;
+}
+
+.mobile-view .main-panel > .content-wrapper > div {
+  width: 100%;
+}
+
+.mobile-view .card-body {
+  padding: 0.5rem;
+}
+
+.mobile-view .container-scroller {
+  height: 100vh;
+}
+
+.mobile-view .navbar .navbar-brand-wrapper {
+  width: auto;
+}
+
+.mobile-view .navbar .navbar-menu-wrapper {
+  width: 100%;
+}
+
+.mobile-view .navbar .navbar-nav-right {
+  display: none!important;
+}
+
+.mobile-view .page-body-wrapper {
+  height: calc(100vh - 60px);
+  min-height: auto;
+}
+
+.mobile-view .sm-editor {
+  height: calc(100vh - 205px);
+}
+
+.mobile-view .document .sm-editor-scroller {
+  height: calc(100vh - 60px)!important;
+}
+
+.mobile-view .smm-toolbar *:not(img) {
+  font-size: 1rem;
+}
+
+.mobile-view .smm-toolbar__controls {
+  height: auto;
+}
+
+.mobile-view .sm-toolbar__control {
+  padding: 0.6rem;
+}
+
+.mobile-view .sm-toolbar__control img {
+  height: 1rem;
+  width: 1rem;
+}
+
+.mobile-view .smm-comments {
+  font-size: 1rem;
+}
+
+.mobile-view .smm-comments__count {
+  padding: 0 1.66667rem;
+}

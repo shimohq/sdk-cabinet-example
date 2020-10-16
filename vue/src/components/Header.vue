@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar col-lg-12 col-12 p-0 d-flex flex-row">
+  <nav class="navbar col-lg-12 col-12 p-0 d-flex flex-row flex-nowrap">
     <div class="navbar-brand-wrapper d-flex justify-content-center">
       <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
         <router-link class="navbar-brand brand-logo" to='/'><img :src="logo" alt='石墨文档' /></router-link>

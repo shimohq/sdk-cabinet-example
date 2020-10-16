@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import ShimoCabinet from 'shimo-sdk-cabinet/dist/sheet.min'
 
@@ -23,7 +24,11 @@ class SheetEditor extends React.Component {
       entrypoint: file.config.entrypoint,
       token: file.config.token,
 
-      container: this.editorRef.current
+      container: this.editorRef.current,
+
+      editorOptions: {
+        isMobile: this.props.isMobile
+      }
     })
     this.cabinet.render()
       .then(() => {
@@ -48,7 +53,15 @@ class SheetEditor extends React.Component {
 
 SheetEditor.propTypes = {
   file: PropTypes.object.isRequired,
-  onReady: PropTypes.func
+  onReady: PropTypes.func,
+  isMobile: PropTypes.bool
 }
 
-export default SheetEditor
+export default connect(
+  (state, ownProps) => {
+    return {
+      isMobile: state.Global.isMobile
+    }
+  },
+  dispatch => ({})
+)(SheetEditor)

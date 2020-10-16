@@ -11,7 +11,7 @@
           <span class="menu-title">新建文档</span>
         </span>
         <div>
-          <ul class="nav flex-column sub-menu">
+          <ul class="nav sub-menu">
             <li class="nav-item">
               <button type='button' class="nav-link majestic-btn" @click="createFile" data-file-type="document">文档</button>
             </li>
@@ -32,7 +32,7 @@
           <span class="menu-title">导入文档</span>
         </span>
         <div>
-          <ul class="nav flex-column sub-menu">
+          <ul class="nav sub-menu">
             <li class="nav-item">
               <button type='button' class="nav-link majestic-btn" @click="importFile">文档 / 表格</button>
             </li>

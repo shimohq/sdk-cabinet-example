@@ -13,6 +13,12 @@ export default {
 
   components: {
     Header
+  },
+
+  mounted () {
+    if (this.$store.state.isMobile) {
+      document.querySelector('html').classList.add('mobile-view')
+    }
   }
 }
 </script>

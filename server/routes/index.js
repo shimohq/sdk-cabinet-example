@@ -122,6 +122,34 @@ router.get('/files/:guid/export', loadToken, checkUser, async ctx => {
   ctx.body = await Shimo.exportFile(ctx.state.user.username, ctx.params.guid, ctx.query.toType)
 })
 
+router.get('/files/:guid/collaborators', loadToken, checkUser, async ctx => {
+  const file = await File.get({ guid: ctx.params.guid })
+
+  const manager = (await User.getAllByIds([file.userId]))[0]
+  const managerId = `shimo_cabinet_${manager.username}`
+
+  ctx.body = (await Shimo.findUsers(
+    ctx.state.user.username,
+    (await User.getAll()).map(u => `shimo_cabinet_${u.username}`)
+  )).map(u => ({
+    ...u,
+
+    // 用户的权限信息，请根据实际的权限信息设置，此处仅作为演示
+    permission: {
+      read: true,
+      edit: true,
+      comment: true,
+      lock: true,
+
+      // 管理者的锁定权限
+      manage: managerId === u.clientUserId
+    },
+
+    // 仅用于显示，不做权限判断
+    displayRole: managerId === u.clientUserId ? '管理员' : '协作者'
+  }))
+})
+
 router.get('/users/me', loadToken, checkUser, ctx => {
   ctx.body = ctx.state.user
 })

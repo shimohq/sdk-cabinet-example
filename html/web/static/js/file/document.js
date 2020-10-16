@@ -15,7 +15,8 @@ const cabinet = new window.ShimoCabinet({
       Toolbar: {
         container: document.querySelector('.editor-toolbar')
       }
-    }
+    },
+    isMobile: window.isMobile
   }
 })
 cabinet.render()

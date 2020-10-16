@@ -24,7 +24,7 @@ class Header extends React.Component {
 
   render () {
     return (
-      <nav className='navbar col-lg-12 col-12 p-0 d-flex flex-row'>
+      <nav className='navbar col-lg-12 col-12 p-0 d-flex flex-row flex-nowrap'>
         <div className='navbar-brand-wrapper d-flex justify-content-center'>
           <div className='navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100'>
             <Link className='navbar-brand brand-logo' to='/'><img src={logo} alt='石墨文档' /></Link>

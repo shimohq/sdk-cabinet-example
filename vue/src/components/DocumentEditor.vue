@@ -1,5 +1,5 @@
 <template>
-  <div class="row d-flex flex-grow-1">
+  <div class="row d-flex flex-grow-1 document">
     <div class="col-lg-12 grid-margin stretch-card m-0 flex-column-reverse position-relative">
       <div class="editor-container">
         <div class="editor-toolbar" />
@@ -30,7 +30,11 @@ export default {
       entrypoint: file.config.entrypoint,
       token: file.config.token,
 
-      container: this.$refs.editorRef
+      container: this.$refs.editorRef,
+
+      editorOptions: {
+        isMobile: this.$store.state.isMobile
+      }
     })
     this.cabinet.render()
       .then(
@@ -46,3 +50,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.mobile-view .document .sm-editor-scroller {
+  height: calc(100vh - 60px)!important;
+}
+</style>

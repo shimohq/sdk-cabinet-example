@@ -11,7 +11,11 @@ module.exports = {
   },
 
   async get (data) {
-    return camelCase(await db.prepare('SELECT * FROM files WHERE id = ?').get(data.id))
+    if (data.id) {
+      return camelCase(await db.prepare('SELECT * FROM files WHERE `id` = ?').get(data.id))
+    }
+
+    return camelCase(await db.prepare('SELECT * FROM files WHERE `guid` = ?').get(data.guid))
   },
 
   async list (page = 0, size = 20) {
