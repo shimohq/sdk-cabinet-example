@@ -20,7 +20,7 @@
     "nunjucks": "^3.2.0",
     "pino": "^5.13.6",
     "pino-pretty": "^3.4.0",
-    "shimo-sdk-cabinet": "^4.0.0",
+    "shimo-sdk-cabinet": "^4.0.1",
     "whatwg-fetch": "^3.4.0"
   },
   "devDependencies": {
