@@ -3,3 +3,8 @@
   flex: 1;
   height: calc(100vh - 140px);
 }
+
+.mobile-view .sm-editor {
+  flex: initial;
+  height: calc(100vh - 105px);
+}
