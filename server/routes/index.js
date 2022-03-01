@@ -1,7 +1,7 @@
 'use strict'
 
 const Router = require('koa-router')
-const jwt = require('jsonwebtoken')
+const njwt = require('njwt')
 
 const User = require('../models/user')
 const Shimo = require('../models/shimo')
@@ -35,7 +35,7 @@ router.post('/login', async ctx => {
 
   ctx.assert(user != null, 400, 'User doesn\'t exist or password incorrect')
 
-  const token = jwt.sign(user.toJSON(), 'shimo', { expiresIn: '1d' })
+  const token = encodeJWT(user.toJSON())
   ctx.body = { token }
 })
 
@@ -49,7 +49,7 @@ router.post('/register', async ctx => {
 
   const u = (await User.get(username, password)).toJSON()
 
-  const token = jwt.sign(u, 'shimo', { expiresIn: '1d' })
+  const token = encodeJWT(u)
   ctx.body = { token }
 })
 
@@ -160,7 +160,7 @@ function loadToken (ctx, next) {
     if (typeof authorization === 'string') {
       const match = authorization.match(/^bearer (\S+)$/i)
       if (match && match[1]) {
-        ctx.state.user = jwt.verify(match[1], 'shimo')
+        ctx.state.user = decodeJWT(match[1])
       }
     }
   } catch (e) {
@@ -180,3 +180,15 @@ function checkUser (ctx, next) {
 }
 
 module.exports = router
+
+function encodeJWT (payload) {
+  const jwt = njwt.create(payload, 'shimo')
+  delete jwt.body.jti
+  jwt.setExpiration(Date.now() + (1000 * 60 * 60 * 24))
+  return jwt.compact()
+}
+
+function decodeJWT (token) {
+  const decoded = njwt.verify(token, 'shimo')
+  return decoded.body
+}
